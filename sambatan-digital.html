@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sambatan Digital: Belajar Tim & Kerja Sama</title>
+<style>
+:root{--bg:#f6efe2;--card:#fffaf0;--ink:#2b1d12;--mut:#6b5a48;--br:#8a4b1f;--gold:#c8902a;--ok:#2f7d4f;--bad:#b3402a;--line:#e2d3b8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1510;--card:#2a2018;--ink:#f3e8d6;--mut:#c2b199;--br:#e0a064;--gold:#e8b84a;--line:#4a3a2b;--ok:#5fbf86;--bad:#ee8a73;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1c1510;--card:#2a2018;--ink:#f3e8d6;--mut:#c2b199;--br:#e0a064;--gold:#e8b84a;--line:#4a3a2b;--ok:#5fbf86;--bad:#ee8a73;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:12px 14px 40px}
+header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;border-bottom:3px double var(--gold);padding-bottom:8px;margin-bottom:10px}
+h1{font-size:1.25rem;margin:0;color:var(--br)}h2{font-size:1.15rem;color:var(--br);margin:.2em 0}
+.steps{display:flex;gap:6px;flex-wrap:wrap}.chip{font-size:.78rem;padding:3px 10px;border-radius:99px;border:1px solid var(--line);color:var(--mut)}.chip.on{background:var(--br);color:var(--bg);border-color:var(--br)}.chip.done{border-color:var(--ok);color:var(--ok)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}
+.batik{background-image:radial-gradient(circle at 10px 10px,var(--line) 2px,transparent 3px);background-size:20px 20px}
+button{font:inherit;cursor:pointer;border:1px solid var(--br);background:var(--br);color:var(--bg);padding:8px 14px;border-radius:10px;margin:3px 4px 3px 0}
+button.alt{background:transparent;color:var(--br)}button:disabled{opacity:.45;cursor:not-allowed}
+.opt{display:block;width:100%;text-align:left;background:var(--card);color:var(--ink);border-color:var(--line)}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,var(--card))}.opt.bad{border-color:var(--bad)}
+#stage{position:relative;height:56vh;min-height:300px;border-radius:12px;overflow:hidden;background:linear-gradient(#f2c98a,#9b6a3a);touch-action:none;display:none}
+#stage video,#stage canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#msg{position:absolute;left:8px;right:8px;bottom:8px;background:rgba(30,20,10,.82);color:#fff;padding:6px 10px;border-radius:8px;font-size:.88rem;pointer-events:none}
+#ret{position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px;border:2px solid #fff;border-radius:50%;pointer-events:none;display:none;mix-blend-mode:difference}
+textarea{width:100%;min-height:80px;font:inherit;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.small{font-size:.86rem;color:var(--mut)}.quote{border-left:4px solid var(--gold);padding-left:10px;font-style:italic}
+.fb{white-space:pre-wrap}
+</style></head><body><div class="wrap">
+<header><h1>🏛️ Sambatan Digital</h1><div class="steps" id="steps"></div></header>
+
+<section id="s0">
+<div class="card batik"><h2>Rukun agawe santosa, crah agawe bubrah</h2>
+<p class="quote">Peribahasa Jawa: kerukunan membuat kuat, perpecahan membuat runtuh.</p>
+<p>Di desa-desa Jawa, <b>sambatan</b> adalah tradisi warga bergotong royong membangun rumah (joglo) tetangga dalam sehari. Tidak ada yang digaji, tetapi semua tahu tugasnya. Tradisi ini kita pakai untuk belajar <b>konsep tim dan kerja sama</b> dalam kepemimpinan pendidikan.</p></div>
+<div class="card"><h2>Skenariomu</h2>
+<p>Sekolah desa butuh ruang belajar baru. Kamu menjadi <b>pemimpin sambatan</b>. Ada 3 misi (± 15–20 menit):</p>
+<ol><li><b>AR – Pasang Saka Guru:</b> jawab 4 pertanyaan, lalu tempatkan 4 tiang (pilar tim) di lantai dunia nyata lewat kamera.</li>
+<li><b>VR – Balai Sambatan:</b> masuk ke balai, tatap tiap warga untuk membagi tugas sesuai kekuatannya.</li>
+<li><b>AI – Rembug Desa:</b> hadapi skenario konflik yang dibuat AI dan terima umpan balik.</li></ol>
+<p class="small">Tip: buka tautan ini langsung di browser ponsel (Chrome/Safari) agar kamera dan sensor gerak bisa dipakai. Jika kamera tidak tersedia, AR tetap jalan dengan latar 3D.</p>
+<button onclick="go(1)">Mulai Misi 1 →</button></div>
+</section>
+
+<div id="stage"><video id="vid" playsinline muted style="display:none"></video><div id="ret"></div><div id="msg"></div></div>
+
+<section id="s1" style="display:none"><div class="card">
+<h2>Misi 1 · AR: Pasang 4 Saka Guru</h2>
+<p class="small">Saka guru adalah empat tiang utama joglo. Buka tiap tiang dengan menjawab pertanyaan, lalu <b>ketuk lantai</b> pada pemandangan di atas untuk memasangnya. Geser layar (atau gerakkan ponsel) untuk melihat sekeliling.</p>
+<button class="alt" id="camBtn" onclick="startCam()">📷 Aktifkan kamera (AR)</button>
+<div id="q1"></div><div id="m1res" class="small"></div></div></section>
+
+<section id="s2" style="display:none"><div class="card">
+<h2>Misi 2 · VR: Balai Sambatan</h2>
+<p class="small">Lima warga berdiri di balai. <b>Tatap atau ketuk</b> seorang warga untuk mengganti tugasnya. Setelah semua terisi tanpa ganda, tatap/ketuk <b>gong 🔔</b> untuk memeriksa.</p>
+<button class="alt" onclick="enableGyro()">🧭 Sensor gerak</button>
+<button class="alt" onclick="goVR()">🥽 Mode kacamata VR (Cardboard)</button>
+<button class="alt" onclick="aiWarga()">🎲 Variasi warga oleh AI</button>
+<div class="small" id="warnote"></div>
+<div id="m2res" class="fb"></div>
+<button id="next2" onclick="go(3)" disabled>Lanjut ke Misi 3 →</button></div></section>
+
+<section id="s3" style="display:none"><div class="card">
+<h2>Misi 3 · AI: Rembug Desa</h2>
+<p class="small">Generative AI membuat skenario konflik tim sekolah yang berbeda tiap kali, lalu menilai tanggapanmu berdasarkan konsep tim.</p>
+<button onclick="aiScen()" id="scBtn">✨ Buat skenario rembug</button>
+<div id="scen"></div></div></section>
+
+<section id="s4" style="display:none"><div class="card batik"><h2>Refleksi: Kita Belajar Apa?</h2><div id="sum"></div>
+<p><b>Tulis refleksimu</b> (tidak disimpan di halaman ini, salin jika perlu):</p>
+<ol><li>Pilar tim mana yang paling sulit kamu pahami? Mengapa?</li><li>Bagaimana nilai sambatan bisa dipakai di timmu di sekolah?</li><li>Satu tindakan pertama yang akan kamu lakukan sebagai pemimpin tim?</li></ol>
+<textarea placeholder="Refleksimu..."></textarea><br><button class="alt" onclick="go(0)">↺ Ulangi dari awal</button></div></section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),T=window.THREE;
+const NAMES=["Mulai","AR","VR","AI","Refleksi"];
+let step=0,st={err:0,placed:0,avail:[],pil:[],m2:null,ai:null,warga:null};
+const Q=[
+ ["Semua anggota paham dan menyepakati hasil yang ingin dicapai bersama, misalnya “semua murid kelas 4 bisa menulis teks laporan”.","Tujuan Bersama","Tim butuh tujuan yang jelas dan dimiliki bersama."],
+ ["Setiap orang tahu tugasnya, siapa penanggung jawab akhir, dan tidak ada tugas yang tumpang tindih atau terlewat.","Peran Jelas","Ingat RACI: satu tugas, satu penanggung jawab akhir."],
+ ["Informasi dikonfirmasi, jadwal disinkronkan, dan kegiatan tidak saling bertabrakan.","Koordinasi","Ingat komunikasi lingkar tertutup dan kalender terpadu."],
+ ["Anggota berani bertanya, mengaku salah, dan berbeda pendapat tanpa takut dipermalukan.","Kepercayaan","Ini disebut juga keamanan psikologis."]];
+const PN=Q.map(q=>q[1]);
+const TASKS=["Koordinator rapat","Pengadaan bahan","Pelaksana pertukangan","Penjaga mutu & catatan","Penghubung & kabar warga"];
+const WARGA0=[{n:"Pak Joyo",k:"Disegani, pandai memimpin musyawarah",a:0},{n:"Bu Ratri",k:"Punya warung, tahu semua pemasok bahan",a:1},{n:"Mas Bayu",k:"Kuat dan terampil bertukang kayu",a:2},{n:"Bu Tini",k:"Teliti memeriksa dan mencatat",a:3},{n:"Dik Sari",k:"Aktif di grup warga, cepat memberi kabar",a:4}];
+st.warga=WARGA0.map(w=>({...w,t:-1}));
+
+/* ---------- navigasi ---------- */
+function chips(){$("#steps").innerHTML=NAMES.map((n,i)=>`<span class="chip ${i==step?'on':i<step?'done':''}">${n}</span>`).join("")}
+function go(n){step=n;[0,1,2,3,4].forEach(i=>$("#s"+i).style.display=i==n?"":"none");
+ $("#stage").style.display=(n==1||n==2)?"block":"none";chips();
+ if(n==1||n==2){showGroup(n==1?"ar":"vr");resize()}
+ if(n==4)summary();window.scrollTo(0,0)}
+function say(t){$("#msg").textContent=t}
+
+/* ---------- 3D ---------- */
+const stage=$("#stage"),R=new T.WebGLRenderer({antialias:true,alpha:true});
+stage.insertBefore(R.domElement,$("#ret"));R.setClearColor(0,0);R.setScissorTest(true);
+const S=new T.Scene(),cam=new T.PerspectiveCamera(70,1,.1,100);cam.position.set(0,1.4,0);cam.rotation.order="YXZ";S.add(cam);
+S.add(new T.HemisphereLight(0xffffff,0x6b4a2a,1.0));const dl=new T.DirectionalLight(0xffffff,.7);dl.position.set(3,6,2);S.add(dl);
+const AR=new T.Group(),VR=new T.Group();S.add(AR,VR);
+const grid=new T.GridHelper(20,20,0xffffff,0xc8902a);AR.add(grid);
+const M=(c)=>new T.MeshLambertMaterial({color:c});
+function lab(lines,w=512,h=160){const c=document.createElement("canvas");c.width=w;c.height=h;const tex=new T.CanvasTexture(c);
+ const s=new T.Sprite(new T.SpriteMaterial({map:tex,depthTest:false,transparent:true}));s.scale.set(w/h*.45,.45,1);s.renderOrder=5;
+ s.draw=L=>{const x=c.getContext("2d");x.clearRect(0,0,w,h);x.fillStyle="rgba(43,29,18,.88)";x.fillRect(0,0,w,h);x.strokeStyle="#c8902a";x.lineWidth=6;x.strokeRect(3,3,w-6,h-6);
+  L.forEach((l,i)=>{x.fillStyle=l[2]||"#fff";x.font=(l[1]||34)+"px sans-serif";x.textAlign="center";x.fillText(l[0],w/2,44+i*50)});tex.needsUpdate=true};s.draw(lines);return s}
+function pillar(name){const g=new T.Group();const p=new T.Mesh(new T.CylinderGeometry(.13,.15,1.6,16),M(0x7a3f18));p.position.y=.8;g.add(p);
+ const cap=new T.Mesh(new T.BoxGeometry(.4,.1,.4),M(0xc8902a));cap.position.y=1.65;g.add(cap);const l=lab([[name,44,"#ffd27a"]],384,80);l.scale.set(1.2,.25,1);l.position.y=2.0;g.add(l);return g}
+function roof(c,r){const g=new T.Group();const m=new T.Mesh(new T.ConeGeometry(r*1.15,1,4),M(0x9a2f1f));m.rotation.y=Math.PI/4;m.position.y=2.2;g.add(m);
+ const l=lab([["Guyub Rukun",50,"#ffd27a"]],384,90);l.position.y=3.0;g.add(l);g.position.copy(c);return g}
+
+/* balai VR */
+const bal=new T.Group();VR.add(bal);
+bal.add(Object.assign(new T.Mesh(new T.CircleGeometry(8,48),M(0xd9b98a)),{rotation:new T.Euler(-Math.PI/2,0,0)}));
+for(let i=0;i<4;i++){const a=i*Math.PI/2+Math.PI/4,p=pillar(PN[i]);p.position.set(Math.cos(a)*6,0,Math.sin(a)*6);bal.add(p)}
+const rf=new T.Mesh(new T.ConeGeometry(9,2,4),M(0x9a2f1f));rf.rotation.y=Math.PI/4;rf.position.y=4.2;bal.add(rf);
+const gong=new T.Group();[0,1].forEach(i=>{const b=new T.Mesh(new T.CylinderGeometry(.06,.06,1.4,8),M(0x5a2f10));b.position.set(i?.45:-.45,.7,0);gong.add(b)});
+const disc=new T.Mesh(new T.CylinderGeometry(.4,.4,.08,24),M(0xe0a32a));disc.rotation.x=Math.PI/2;disc.position.y=1;gong.add(disc);
+const gl=lab([["🔔 Periksa susunan",34,"#ffd27a"]],384,80);gl.scale.set(1.3,.27,1);gl.position.y=1.9;gong.add(gl);gong.position.set(0,0,-3.2);gong.userData.gong=true;gong.children.forEach(c=>c.userData.gong=true);bal.add(gong);
+let wm=[];
+function buildWarga(){wm.forEach(g=>bal.remove(g));wm=[];const cols=[0x2f6f8f,0x8f2f5a,0x3f8f2f,0x8f6f2f,0x5a2f8f];
+ st.warga.forEach((w,i)=>{const a=-Math.PI/2+(i-2)*.75+Math.PI,g=new T.Group(),b=new T.Mesh(new T.CylinderGeometry(.28,.36,1.0,16),M(cols[i]));b.position.y=.5;g.add(b);
+  const h=new T.Mesh(new T.SphereGeometry(.22,16,16),M(0xe2b48a));h.position.y=1.25;g.add(h);
+  const bl=new T.Mesh(new T.CylinderGeometry(.23,.25,.12,16),M(0x3a2410));bl.position.y=1.45;g.add(bl);
+  const l=lab([]);l.position.y=2.15;g.add(l);g.userData={w:i,lab:l};
+  g.traverse(c=>c.userData.wi=i);g.position.set(Math.sin(a)*3.4,0,-Math.cos(a)*3.4);g.lookAt(0,0,0);bal.add(g);wm.push(g);paintW(i)})}
+function paintW(i){const w=st.warga[i],g=wm[i];g.userData.lab.draw([[w.n,40,"#ffd27a"],[w.k.slice(0,36),24,"#fff"],["Tugas: "+(w.t<0?"?":TASKS[w.t]),28,w.t<0?"#ff9a7a":"#9af0b4"]])}
+buildWarga();
+function showGroup(g){AR.visible=g=="ar";VR.visible=g=="vr";stage.style.background=g=="vr"?"linear-gradient(#f6d79a,#b98a50)":"linear-gradient(#f2c98a,#9b6a3a)";
+ const cam_on=!!stream;grid.visible=!cam_on;$("#vid").style.display=(g=="ar"&&cam_on)?"block":"none";R.domElement.style.background="transparent";
+ $("#ret").style.display=(g=="vr")?"block":"none";
+ say(g=="ar"?"Jawab pertanyaan di bawah, lalu ketuk lantai untuk memasang tiang.":"Tatap/ketuk warga untuk mengganti tugasnya.")}
+
+/* ---------- kamera & sensor ---------- */
+let stream=null,gyro=false,yaw=0,pitch=0,stereo=false;
+async function startCam(){try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"},audio:false});$("#vid").srcObject=stream;await $("#vid").play();showGroup("ar");say("Kamera aktif. Arahkan ke lantai, lalu ketuk untuk memasang tiang.")}catch(e){say("Kamera tidak tersedia di tampilan ini; tetap bisa lanjut dengan latar 3D. Coba buka tautan langsung di browser.")}}
+const q0=new T.Quaternion(),q1=new T.Quaternion(-Math.sqrt(.5),0,0,Math.sqrt(.5)),ez=new T.Vector3(0,0,1),eu=new T.Euler();let ori=null;
+function onOri(e){if(e.alpha==null)return;const d=Math.PI/180,o=(screen.orientation?.angle||0)*d;eu.set(e.beta*d,e.alpha*d,-e.gamma*d,"YXZ");ori=new T.Quaternion().setFromEuler(eu).multiply(q1).multiply(q0.setFromAxisAngle(ez,-o))}
+async function enableGyro(){try{if(DeviceOrientationEvent.requestPermission){const r=await DeviceOrientationEvent.requestPermission();if(r!="granted")throw 0}window.addEventListener("deviceorientation",onOri);gyro=true;say("Sensor gerak aktif: gerakkan ponselmu.")}catch(e){say("Sensor gerak tidak tersedia; geser layar untuk melihat sekeliling.")}}
+function goVR(){stereo=true;$("#ret").style.display="block";(stage.requestFullscreen||stage.webkitRequestFullscreen)?.call(stage);enableGyro();setTimeout(resize,300)}
+document.addEventListener("fullscreenchange",()=>{if(!document.fullscreenElement){stereo=false;resize()}});
+
+/* ---------- input ---------- */
+let down=null;const ray=new T.Raycaster(),v2=new T.Vector2();
+stage.addEventListener("pointerdown",e=>{down={x:e.clientX,y:e.clientY,m:false}});
+stage.addEventListener("pointermove",e=>{if(!down)return;const dx=e.clientX-down.x,dy=e.clientY-down.y;if(Math.abs(dx)+Math.abs(dy)>6)down.m=true;if(down.m&&!gyro){yaw-=dx*.005;pitch=Math.max(-1.2,Math.min(1.2,pitch-dy*.005))}if(down.m){down.x=e.clientX;down.y=e.clientY}});
+stage.addEventListener("pointerup",e=>{if(down&&!down.m){const r=stage.getBoundingClientRect();tap(stereo?0:((e.clientX-r.left)/r.width)*2-1,stereo?0:-((e.clientY-r.top)/r.height)*2+1)}down=null});
+function tap(x,y){v2.set(x,y);ray.setFromCamera(v2,cam);if(step==1)placeAt();else if(step==2)pickWarga()}
+function placeAt(){if(!st.avail.length){say(st.placed<4?"Jawab pertanyaan dulu untuk membuka tiang berikutnya.":"Semua tiang sudah terpasang.");return}
+ const o=ray.ray.origin,d=ray.ray.direction;if(d.y>-.05){say("Arahkan ke lantai/tanah (miringkan pandangan ke bawah).");return}
+ const t=-o.y/d.y,p=o.clone().addScaledVector(d,t);if(t>14){say("Terlalu jauh, dekatkan.");return}
+ const name=st.avail.shift(),g=pillar(name);g.position.set(p.x,0,p.z);AR.add(g);st.pil.push(g);st.placed++;
+ say(`Tiang “${name}” terpasang (${st.placed}/4).`);
+ if(st.placed==4){const c=new T.Vector3();st.pil.forEach(p=>c.add(p.position));c.divideScalar(4);let r=1;st.pil.forEach(p=>r=Math.max(r,p.position.distanceTo(c)));AR.add(roof(c,r));say("Atap terpasang. Joglo kerja sama berdiri! Lanjut ke Misi 2.");m1done()}}
+let gaze={o:null,t:0};
+function pickWarga(){const hit=ray.intersectObjects(bal.children,true).find(h=>h.object.userData.wi!=null||h.object.userData.gong);if(!hit)return false;
+ if(hit.object.userData.gong){checkM2();return true}const i=hit.object.userData.wi;st.warga[i].t=(st.warga[i].t+1)%TASKS.length;paintW(i);return true}
+
+/* ---------- Misi 1 ---------- */
+let qi=0;
+function renderQ(){const q=Q[qi];if(!q){$("#q1").innerHTML="";return}
+ const opts=PN.map((n,i)=>[n,i]).sort(()=>Math.random()-.5);
+ $("#q1").innerHTML=`<p><b>Pertanyaan ${qi+1}/4.</b> Konsep tim mana yang digambarkan?<br>“${q[0]}”</p>`+opts.map(o=>`<button class="opt" data-n="${o[0]}">${o[0]}</button>`).join("")+`<div class="small" id="hint"></div>`;
+ document.querySelectorAll("#q1 .opt").forEach(b=>b.onclick=()=>{if(b.dataset.n==q[1]){b.classList.add("ok");st.avail.push(q[1]);say(`Tiang “${q[1]}” terbuka. Ketuk lantai untuk memasangnya.`);qi++;setTimeout(renderQ,700)}else{b.classList.add("bad");st.err++;$("#hint").textContent="Belum tepat. Petunjuk: "+q[2]}})}
+function m1done(){$("#m1res").innerHTML=`Selesai. Kesalahan menjawab: <b>${st.err}</b>. <button onclick="go(2)">Lanjut ke Misi 2 →</button>`;$("#q1").innerHTML=""}
+
+/* ---------- Misi 2 ---------- */
+function checkM2(){const t=st.warga.map(w=>w.t);let msg="";
+ if(t.includes(-1)){msg="Masih ada warga tanpa tugas.";}else if(new Set(t).size<5){msg="Ada tugas ganda. Ingat prinsip peran jelas: satu tugas, satu penanggung jawab.";}
+ else{const ok=st.warga.filter(w=>w.t==w.a).length;st.m2=ok;msg=`Benar ${ok}/5. `+(ok==5?"Setiap warga ditempatkan sesuai kekuatannya. Tim siap bekerja.":"Periksa kembali: cocokkan kekuatan warga dengan tugas.");if(ok>=3)$("#next2").disabled=false}
+ $("#m2res").textContent=msg;say(msg);gl.draw([[msg.slice(0,34),30,"#ffd27a"]])}
+async function ai(){if(!window.claude)return null;try{return await claude.use("sample")}catch(e){return null}}
+async function aiWarga(){const s=await ai();if(!s){$("#warnote").textContent="AI tidak tersedia di tampilan ini; memakai warga bawaan.";return}
+ $("#warnote").textContent="AI sedang menyusun warga baru...";
+ try{const r=await s.json(`Buat 5 warga fiktif sebuah desa di Jawa untuk latihan sambatan membangun ruang belajar sekolah. Tiap warga punya satu kekuatan yang jelas cocok dengan SATU tugas berbeda. Tugas (indeks a): 0 Koordinator rapat, 1 Pengadaan bahan, 2 Pelaksana pertukangan, 3 Penjaga mutu & catatan, 4 Penghubung & kabar warga. Setiap indeks 0-4 dipakai tepat sekali, urutan acak. Balas HANYA JSON array: [{"n":"nama Jawa","k":"kekuatan maks 36 karakter, tanpa menyebut nama tugas persis","a":0}]`);
+  if(Array.isArray(r)&&r.length==5&&new Set(r.map(x=>x.a)).size==5){st.warga=r.map(x=>({n:String(x.n).slice(0,14),k:String(x.k).slice(0,36),a:+x.a,t:-1}));buildWarga();$("#warnote").textContent="Warga baru dibuat AI. Susun ulang tugasnya!";$("#m2res").textContent=""}else throw 0}
+ catch(e){$("#warnote").textContent="AI belum berhasil; memakai warga bawaan."}}
+
+/* ---------- Misi 3 ---------- */
+const FALL={judul:"Rapat yang didominasi dua orang",situasi:"Dalam tim penyusun asesmen, Bu Dewi dan Pak Tono terus menguasai diskusi, sedangkan Bu Ani (guru honorer) diam. Tenggat tinggal dua minggu.",pilihan:["Memutuskan sendiri agar cepat selesai.","Meminta semua menulis ide dulu, lalu bergiliran bicara, dan menanyai Bu Ani secara hangat.","Membiarkan karena nanti juga akan terselesaikan."]};
+let scen=null;
+async function aiScen(){const s=await ai();$("#scBtn").disabled=true;$("#scen").innerHTML="<p class='small'>Menyusun skenario...</p>";
+ if(s){try{scen=await s.json(`Buat satu skenario konflik tim di sekolah dasar/menengah di Indonesia, bernuansa gotong royong atau sambatan, untuk latihan pemimpin sekolah. Fokus acak salah satu: koordinasi, kepercayaan, motivasi, pembagian tugas. Balas HANYA JSON: {"judul":"","situasi":"2-3 kalimat","pilihan":["","",""]} dengan 3 pilihan tindakan pemimpin yang berbeda kualitas.`,{cache:false});if(!scen?.situasi)throw 0}catch(e){scen=FALL}}else scen=FALL;
+ drawScen(!!s)}
+function drawScen(live){$("#scen").innerHTML=`<p class="small">${live?"Dibuat oleh AI":"Skenario cadangan (AI tidak tersedia di tampilan ini)"}</p><h3>${esc(scen.judul)}</h3><p>${esc(scen.situasi)}</p>`+scen.pilihan.map((p,i)=>`<button class="opt" onclick="pick(${i})">${esc(p)}</button>`).join("")+`<p>Tulis alasanmu / tindakan lanjutan sebagai pemimpin:</p><textarea id="ans"></textarea><button onclick="aiFb()" id="fbBtn">🧠 Minta umpan balik</button><div id="fb" class="fb card" style="display:none"></div>`;window.ch=null}
+function esc(s){return String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))}
+function pick(i){window.ch=i;document.querySelectorAll("#scen .opt").forEach((b,j)=>b.classList.toggle("ok",j==i))}
+async function aiFb(){const a=$("#ans").value.trim(),c=window.ch;if(c==null&&!a){alert("Pilih salah satu tindakan atau tulis tanggapanmu.");return}
+ const box=$("#fb");box.style.display="block";box.textContent="AI sedang menilai...";$("#fbBtn").disabled=true;const s=await ai();
+ if(!s){box.textContent="AI tidak tersedia di tampilan ini. Bandingkan jawabanmu dengan prinsip: tujuan jelas, peran jelas, komunikasi dikonfirmasi, dan keamanan psikologis. Pilihan yang melibatkan semua suara dan menjaga rasa aman biasanya paling kuat.";st.ai=2;$("#fbBtn").disabled=false;$("#nxt")||box.insertAdjacentHTML("afterend",'<button id="nxt" onclick="go(4)">Selesai → Refleksi</button>');return}
+ try{const r=await s.json(`Kamu fasilitator mata kuliah Kepemimpinan Pendidikan. Konsep acuan: Tuckman (forming-storming-norming-performing), RACI, komunikasi lingkar tertutup, kepercayaan & keamanan psikologis (Edmondson), tangga keputusan Tannenbaum-Schmidt. Skenario: ${scen.situasi}\nTindakan terpilih: ${c!=null?scen.pilihan[c]:"(tidak memilih)"}\nTanggapan mahasiswa: ${a||"(kosong)"}\nNilai singkat dan ramah dalam bahasa Indonesia. Balas HANYA JSON: {"skor":1-4,"tepat":"1-2 kalimat hal yang sudah tepat","tingkatkan":"1-2 kalimat saran","konsep":"nama konsep yang relevan + satu kalimat","tanya":"satu pertanyaan reflektif"}`,{cache:false});
+  st.ai=+r.skor||2;box.innerHTML=`<b>Skor: ${st.ai}/4</b><br>✅ ${esc(r.tepat)}<br>🔧 ${esc(r.tingkatkan)}<br>📚 ${esc(r.konsep)}<br>💭 <i>${esc(r.tanya)}</i>`}
+ catch(e){box.textContent="Umpan balik gagal dimuat. Coba lagi.";}
+ $("#fbBtn").disabled=false;if(!$("#nxt"))box.insertAdjacentHTML("afterend",'<button id="nxt" onclick="go(4)">Selesai → Refleksi</button>')}
+
+function summary(){$("#sum").innerHTML=`<p>Misi 1 (AR): ${st.placed}/4 tiang terpasang, ${st.err} kesalahan.<br>Misi 2 (VR): ${st.m2==null?"belum diperiksa":st.m2+"/5 warga tepat"}.<br>Misi 3 (AI): ${st.ai==null?"belum dinilai":"skor "+st.ai+"/4"}.</p><p class="quote">Rukun agawe santosa: tim yang kuat dibangun dari tujuan bersama, peran jelas, koordinasi, dan kepercayaan.</p>`}
+
+/* ---------- render ---------- */
+function resize(){const w=stage.clientWidth,h=stage.clientHeight;R.setSize(w,h,false);R.domElement.style.width="100%";R.domElement.style.height="100%"}
+new ResizeObserver(resize).observe(stage);addEventListener("resize",resize);
+const rr=new T.Raycaster();
+function loop(t){requestAnimationFrame(loop);if(!stage.offsetWidth)return;
+ if(gyro&&ori)cam.quaternion.copy(ori);else{cam.rotation.set(pitch,yaw,0)}
+ const w=R.domElement.width,h=R.domElement.height;
+ if(step==2&&(stereo||true)){ // tatapan (dwell) hanya pada mode VR
+  if(stereo){rr.setFromCamera(new T.Vector2(0,0),cam);const hit=rr.intersectObjects(bal.children,true).find(x=>x.object.userData.wi!=null||x.object.userData.gong);
+   const id=hit?(hit.object.userData.gong?"g":hit.object.userData.wi):null;if(id!==gaze.o){gaze.o=id;gaze.t=t}else if(id!==null&&t-gaze.t>1400){gaze.t=t;ray.copy(rr);pickWarga()}}}
+ if(stereo){R.setViewport(0,0,w/2,h);R.setScissor(0,0,w/2,h);cam.aspect=w/2/h;cam.updateProjectionMatrix();cam.translateX(-.03);R.render(S,cam);cam.translateX(.03);
+  R.setViewport(w/2,0,w/2,h);R.setScissor(w/2,0,w/2,h);cam.translateX(.03);R.render(S,cam);cam.translateX(-.03)}
+ else{R.setViewport(0,0,w,h);R.setScissor(0,0,w,h);cam.aspect=w/h;cam.updateProjectionMatrix();R.render(S,cam)}}
+chips();renderQ();resize();loop(0);
+</script></body></html>
